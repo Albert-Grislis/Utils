@@ -3,10 +3,7 @@ import XCTest
 
 final class UtilsTests: XCTestCase {
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Utils().text, "Hello, World!")
+        XCTAssertEqual(Utils().text, "Utils!")
     }
 
     static var allTests = [
