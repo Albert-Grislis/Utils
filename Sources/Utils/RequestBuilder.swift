@@ -15,6 +15,19 @@ open class RequestBuilder {
     private(set) public var body: Data?
     private(set) public var parameters: [(key: String, value: String)] = []
     
+    // MARK: Initializers & Deinitializers
+    public init(url: URL? = nil,
+                method: String = "GET",
+                headers: [String : String] = [:],
+                body: Data? = nil,
+                parameters: [(key: String, value: String)] = []) {
+        self.url = url
+        self.method = method
+        self.headers = headers
+        self.body = body
+        self.parameters = parameters
+    }
+    
     @discardableResult
     open func setURL(_ url: URL?) -> Self {
         self.url = url
