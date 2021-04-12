@@ -34,6 +34,7 @@ final public class Atomic<Type> {
         protectedValue = wrappedValue
         lock = pthread_rwlock_t()
         attribute = pthread_rwlockattr_t()
+        
         pthread_rwlockattr_init(&attribute)
         pthread_rwlock_init(&lock, &attribute)
     }
