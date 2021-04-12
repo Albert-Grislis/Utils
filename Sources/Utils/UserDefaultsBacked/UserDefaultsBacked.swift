@@ -10,6 +10,7 @@ import Foundation
 @propertyWrapper
 public class UserDefaultsBacked<Type> {
     
+    // MARK: Public properties
     public var wrappedValue: Type {
         get {
             let value: Type? = userDefaults.value(forKey: key) as? Type

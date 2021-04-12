@@ -10,6 +10,7 @@ import Foundation
 @propertyWrapper
 final public class RawRepresentableUserDefaultsBacked<Type>: UserDefaultsBacked<Type> where Type: RawRepresentable {
     
+    // MARK: Public properties
     override public var wrappedValue: Type {
         get {
             let value: Type.RawValue? = userDefaults.value(forKey: key) as? Type.RawValue

@@ -10,6 +10,7 @@ import Foundation
 @propertyWrapper
 final public class Atomic<Type> {
     
+    // MARK: Public properties
     public var wrappedValue: Type {
         get {
             pthread_rwlock_wrlock(&lock)
@@ -22,6 +23,8 @@ final public class Atomic<Type> {
             pthread_rwlock_unlock(&lock)
         }
     }
+    
+    // MARK: Private properties
     private var lock: pthread_rwlock_t
     private var attribute: pthread_rwlockattr_t
     private var protectedValue: Type

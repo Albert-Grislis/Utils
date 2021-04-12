@@ -9,6 +9,7 @@ import Foundation
 
 open class RequestBuilder {
     
+    // MARK: Public properties
     private(set) public var url: URL?
     private(set) public var method: String = "GET"
     private(set) public var headers: [String: String] = [:]
@@ -28,6 +29,7 @@ open class RequestBuilder {
         self.parameters = parameters
     }
     
+    // MARK: Public methods
     @discardableResult
     open func setURL(_ url: URL?) -> Self {
         self.url = url
