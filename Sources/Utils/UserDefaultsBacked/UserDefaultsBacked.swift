@@ -1,6 +1,6 @@
 //
 //  UserDefaultsBacked.swift
-//  
+//
 //
 //  Created by Albert Grislis on 13.02.2021.
 //
@@ -15,7 +15,8 @@ public class UserDefaultsBacked<Type> {
         get {
             let value: Type? = userDefaults.value(forKey: key) as? Type
             return value ?? defaultValue
-        } set {
+        }
+        set {
             userDefaults.setValue(newValue, forKey: key)
         }
     }

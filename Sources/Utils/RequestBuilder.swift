@@ -1,6 +1,6 @@
 //
 //  RequestBuilder.swift
-//  
+//
 //
 //  Created by Albert Grislis on 13.02.2021.
 //
@@ -87,12 +87,10 @@ open class RequestBuilder {
         components?.queryItems = parameters.compactMap { URLQueryItem(name: $0.key, value: $0.value) }
         var urlRequest: URLRequest?
         if let url = components?.url {
-            urlRequest = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
-            urlRequest?.httpMethod = method
-            headers.forEach {
-                urlRequest?.addValue($0.value, forHTTPHeaderField: $0.key)
-            }
-            urlRequest?.httpBody = body
+            urlRequest = URLRequest(url: url,
+                                    cachePolicy: cachePolicy,
+                                    timeoutInterval: timeoutInterval)
+            configureURLRequest(pointerToURLRequest: &urlRequest)
         }
         return urlRequest
     }
@@ -106,12 +104,17 @@ open class RequestBuilder {
         var urlRequest: URLRequest?
         if let url = components?.url {
             urlRequest = URLRequest(url: url)
-            urlRequest?.httpMethod = method
-            headers.forEach {
-                urlRequest?.addValue($0.value, forHTTPHeaderField: $0.key)
-            }
-            urlRequest?.httpBody = body
+            configureURLRequest(pointerToURLRequest: &urlRequest)
         }
         return urlRequest
+    }
+    
+    // MARK: Private methods
+    private func configureURLRequest(pointerToURLRequest urlRequest: inout URLRequest?) {
+        urlRequest?.httpMethod = method
+        headers.forEach {
+            urlRequest?.addValue($0.value, forHTTPHeaderField: $0.key)
+        }
+        urlRequest?.httpBody = body
     }
 }

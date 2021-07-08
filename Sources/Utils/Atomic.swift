@@ -1,6 +1,6 @@
 //
 //  Atomic.swift
-//  
+//
 //
 //  Created by Albert Grislis on 13.02.2021.
 //
@@ -17,7 +17,8 @@ final public class Atomic<Type> {
             let value = protectedValue
             pthread_rwlock_unlock(&lock)
             return value
-        } set {
+        }
+        set {
             pthread_rwlock_wrlock(&lock)
             protectedValue = newValue
             pthread_rwlock_unlock(&lock)

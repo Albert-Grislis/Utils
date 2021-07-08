@@ -1,6 +1,6 @@
 //
 //  RawRepresentableUserDefaultsBacked.swift
-//  
+//
 //
 //  Created by Albert Grislis on 13.02.2021.
 //
@@ -15,7 +15,8 @@ final public class RawRepresentableUserDefaultsBacked<Type>: UserDefaultsBacked<
         get {
             let value: Type.RawValue? = userDefaults.value(forKey: key) as? Type.RawValue
             return Type(rawValue: value ?? defaultValue.rawValue) ?? defaultValue
-        } set {
+        }
+        set {
             userDefaults.setValue(newValue.rawValue, forKey: key)
         }
     }
